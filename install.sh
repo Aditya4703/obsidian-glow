@@ -77,6 +77,10 @@ DEPS=(
     pavucontrol
     ttf-jetbrains-mono-nerd
     inter-font
+    starship
+    eza
+    bat
+    fastfetch
 )
 
 AUR_DEPS=(
@@ -147,6 +151,18 @@ deploy "$REPO_DIR/config/cava/config_ags"         "$HOME/.config/cava/config_ags
 deploy "$REPO_DIR/config/music_widget/music_widget.py"   "$HOME/.config/music_widget/music_widget.py"
 deploy "$REPO_DIR/config/music_widget/toggle_music.sh"   "$HOME/.config/music_widget/toggle_music.sh"
 chmod +x "$HOME/.config/music_widget/toggle_music.sh"
+
+# Starship
+deploy "$REPO_DIR/config/starship/starship.toml"  "$HOME/.config/starship.toml"
+
+# Fastfetch
+deploy "$REPO_DIR/config/fastfetch/config.jsonc"  "$HOME/.config/fastfetch/config.jsonc"
+
+# Kitty
+deploy "$REPO_DIR/config/kitty/kitty.conf"        "$HOME/.config/kitty/kitty.conf"
+
+# Bashrc
+deploy "$REPO_DIR/.bashrc"                        "$HOME/.bashrc"
 
 # Wallpaper
 mkdir -p "$HOME/Pictures/wallpapers"

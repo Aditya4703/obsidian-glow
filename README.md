@@ -4,7 +4,7 @@
 
 **A dark, minimal, violet & cyan Hyprland rice for Arch Linux**
 
-*Glassmorphic aesthetics · Cava music visualizer · Premium animations*
+*Glassmorphic aesthetics · Cava music visualizer · Starship prompt · Premium animations*
 
 ![Hyprland](https://img.shields.io/badge/Hyprland-0.46+-a855f7?style=for-the-badge&logo=wayland&logoColor=white)
 ![Arch](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)
@@ -35,6 +35,7 @@
 
 ```
 obsidian-glow/
+├── .bashrc                       # Enhanced bash with aliases & starship init
 ├── config/
 │   ├── hypr/
 │   │   ├── hyprland.lua          # Main Hyprland config (Lua)
@@ -44,6 +45,12 @@ obsidian-glow/
 │   ├── waybar/
 │   │   ├── config.jsonc          # Glassmorphic top bar
 │   │   └── style.css             # Neon glow styling
+│   ├── kitty/
+│   │   └── kitty.conf            # Terminal with Obsidian Glow colors
+│   ├── starship/
+│   │   └── starship.toml         # Custom Starship prompt theme
+│   ├── fastfetch/
+│   │   └── config.jsonc          # System info splash screen
 │   ├── cava/
 │   │   └── config_ags            # Audio visualizer (raw output for widget)
 │   └── music_widget/
@@ -147,6 +154,36 @@ After installing, **log out and back into Hyprland** to apply everything.
 
 ---
 
+## ⚡ Shell Setup
+
+The shell experience is powered by:
+
+| Tool | Purpose |
+|------|---------|
+| **Starship** | Fast, customizable prompt with git info, language detection, and Obsidian Glow theme |
+| **eza** | Modern `ls` with icons, colors, and git status |
+| **bat** | `cat` with syntax highlighting |
+| **fastfetch** | System info splash on terminal launch |
+
+### Shell Aliases
+
+| Alias | Command |
+|-------|---------|
+| `ls` | `eza --icons` |
+| `ll` | `eza -lh --icons --git` |
+| `la` | `eza -lah --icons --git` |
+| `lt` | `eza --tree --level=2` |
+| `cat` | `bat` |
+| `gs` | `git status -sb` |
+| `ga` | `git add` |
+| `gc` | `git commit` |
+| `gp` | `git push` |
+| `gl` | `git log --oneline --graph` |
+| `ff` | `fastfetch` |
+| `y` | `yazi` |
+
+---
+
 ## 🎵 Music Widget
 
 A custom **GTK Layer Shell** overlay that sits at the bottom of the screen, featuring:
@@ -185,6 +222,10 @@ Toggle with `SUPER + N`. Works with any MPRIS-compatible player (Feishin, Firefo
 | `pavucontrol` | Volume mixer GUI |
 | `ttf-jetbrains-mono-nerd` | Primary UI font |
 | `inter-font` | Secondary UI font |
+| `starship` | Shell prompt |
+| `eza` | Modern ls replacement |
+| `bat` | Syntax-highlighted cat |
+| `fastfetch` | System info |
 
 ### AUR
 
@@ -208,7 +249,7 @@ If you prefer not to use the install script:
 sudo pacman -S hyprland hyprlock hypridle hyprpolkitagent waybar kitty thunar \
   dunst playerctl cava python-gobject gtk-layer-shell grim slurp wl-clipboard \
   cliphist brightnessctl pipewire wireplumber pavucontrol \
-  ttf-jetbrains-mono-nerd inter-font
+  ttf-jetbrains-mono-nerd inter-font starship eza bat fastfetch
 
 # AUR (via yay)
 yay -S hyprlauncher awww bibata-cursor-theme feishin-bin
@@ -227,6 +268,16 @@ cp config/hypr/* ~/.config/hypr/
 # Waybar
 cp config/waybar/* ~/.config/waybar/
 
+# Kitty
+cp config/kitty/* ~/.config/kitty/
+
+# Starship
+cp config/starship/starship.toml ~/.config/starship.toml
+
+# Fastfetch
+mkdir -p ~/.config/fastfetch
+cp config/fastfetch/config.jsonc ~/.config/fastfetch/
+
 # Cava
 mkdir -p ~/.config/cava
 cp config/cava/config_ags ~/.config/cava/
@@ -235,6 +286,9 @@ cp config/cava/config_ags ~/.config/cava/
 mkdir -p ~/.config/music_widget
 cp config/music_widget/* ~/.config/music_widget/
 chmod +x ~/.config/music_widget/toggle_music.sh
+
+# Bashrc
+cp .bashrc ~/
 
 # Wallpaper
 mkdir -p ~/Pictures/wallpapers

@@ -1,0 +1,61 @@
+# ╔══════════════════════════════════════════════════════════╗
+# ║       Ble.sh — Obsidian Glow Theme                     ║
+# ╚══════════════════════════════════════════════════════════╝
+# This file is sourced by ble.sh after it fully initializes.
+
+# ── Syntax highlighting colors (Obsidian Glow palette) ───
+ble-color-setface syntax_default           fg=253            # #e4e4e7 text
+ble-color-setface syntax_command           fg=141,bold       # #a855f7 violet — commands
+ble-color-setface syntax_quoted            fg=73             # #06b6d4 cyan — strings
+ble-color-setface syntax_quotation         fg=73,bold        # #06b6d4 cyan — quote marks
+
+ble-color-setface syntax_expr              fg=141            # #a855f7 violet — expressions
+ble-color-setface syntax_error             fg=204,bg=52      # red on dark red
+ble-color-setface syntax_varname           fg=80             # #06b6d4 cyan — variables
+ble-color-setface syntax_delimiter         fg=247            # #a1a1aa dim — delimiters
+ble-color-setface syntax_param_expansion   fg=141            # violet — $vars
+ble-color-setface syntax_history_expansion fg=80             # cyan
+ble-color-setface syntax_function_name     fg=141,bold       # violet — function names
+ble-color-setface syntax_comment           fg=242,italic     # dimmed comments
+ble-color-setface syntax_glob              fg=214            # #f59e0b amber — globs
+ble-color-setface syntax_brace             fg=214            # amber — braces
+ble-color-setface syntax_tilde             fg=80             # cyan — tilde
+ble-color-setface syntax_document          fg=73             # cyan — heredocs
+ble-color-setface syntax_document_begin    fg=73,bold        # cyan
+
+# ── Command type colors ─────────────────────────────────
+ble-color-setface command_builtin          fg=80             # cyan — builtins
+ble-color-setface command_builtin_dot      fg=80,bold        # cyan — source/dot
+ble-color-setface command_alias            fg=141            # violet — aliases
+ble-color-setface command_function         fg=141            # violet — functions
+ble-color-setface command_file             fg=78             # #10b981 green — executables
+ble-color-setface command_keyword          fg=204            # red — keywords
+ble-color-setface command_jobs             fg=214            # amber — bg jobs
+ble-color-setface command_directory        fg=80,bold        # cyan — cd targets
+
+# ── Filename colors ──────────────────────────────────────
+ble-color-setface filename_directory       fg=80,bold        # cyan — dirs
+ble-color-setface filename_executable      fg=78             # green — executables
+ble-color-setface filename_link            fg=80             # cyan — symlinks
+ble-color-setface filename_orphan          fg=204            # red — broken links
+ble-color-setface filename_setuid          fg=204,bold       # red — setuid
+ble-color-setface filename_setgid          fg=214,bold       # amber — setgid
+ble-color-setface filename_other           fg=253            # white — normal files
+
+# ── Variable colors ──────────────────────────────────────
+
+
+# ── Autosuggestion & UI ─────────────────────────────────
+ble-color-setface auto_complete            fg=240            # subtle ghost text
+ble-color-setface region                   fg=253,bg=236     # selection
+
+ble-color-setface disabled                 fg=242            # disabled text
+ble-color-setface overwrite_mode           fg=253,bg=55      # overwrite cursor
+
+# ── Completion menu ──────────────────────────────────────
+ble-color-setface menu_filter_fixed        bold
+ble-color-setface menu_filter_input        fg=141            # violet highlight
+
+# ── Options ──────────────────────────────────────────────
+bleopt complete_auto_delay=100
+bleopt complete_auto_complete=1
