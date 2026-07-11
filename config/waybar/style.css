@@ -1,0 +1,288 @@
+/* ╔══════════════════════════════════════════════════════════╗ */
+/* ║   Waybar — Obsidian Glow                                ║ */
+/* ║   Premium glassmorphic bar with violet & cyan neon       ║ */
+/* ╚══════════════════════════════════════════════════════════╝ */
+
+/*
+ * Palette:
+ *   bg       #0d0d0d     surface   #1a1a2e
+ *   surface2 #16213e     violet    #a855f7
+ *   cyan     #06b6d4     text      #e4e4e7
+ *   dim      #a1a1aa     red       #f43f5e
+ *   green    #10b981     amber     #f59e0b
+ */
+
+/* ── Hard Reset ──────────────────────────────────────────── */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Inter", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── The Bar Itself ──────────────────────────────────────── */
+window#waybar {
+    background: transparent;
+    color: #e4e4e7;
+}
+
+window#waybar > box {
+    background: linear-gradient(
+        135deg,
+        rgba(13, 13, 13, 0.82) 0%,
+        rgba(26, 26, 46, 0.78) 50%,
+        rgba(13, 13, 13, 0.82) 100%
+    );
+    border-radius: 16px;
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    border-bottom: 2px solid rgba(168, 85, 247, 0.35);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(168, 85, 247, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    margin: 6px 10px 0 10px;
+    padding: 0 6px;
+}
+
+/* ── Tooltips ────────────────────────────────────────────── */
+tooltip {
+    background: rgba(22, 33, 62, 0.95);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    color: #e4e4e7;
+}
+
+tooltip label {
+    padding: 6px 10px;
+    color: #e4e4e7;
+}
+
+/* ── All Module Containers (pill-shaped) ─────────────────── */
+#workspaces,
+#window,
+#clock,
+#tray,
+#custom-media,
+#pulseaudio,
+#network,
+#battery,
+#backlight {
+    padding: 0 14px;
+    margin: 5px 3px;
+    border-radius: 12px;
+    background: transparent;
+    color: #e4e4e7;
+    transition: all 0.25s ease;
+}
+
+/* ════════════════════════════════════════════════════════════
+   WORKSPACES
+   ════════════════════════════════════════════════════════════ */
+
+#workspaces {
+    background: rgba(22, 33, 62, 0.45);
+    border: 1px solid rgba(168, 85, 247, 0.12);
+    padding: 0 5px;
+    margin-left: 4px;
+}
+
+#workspaces button {
+    color: rgba(161, 161, 170, 0.6);
+    background: transparent;
+    padding: 0 9px;
+    margin: 4px 2px;
+    border-radius: 9px;
+    font-size: 15px;
+    min-width: 28px;
+    transition: all 0.25s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
+}
+
+#workspaces button.active {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.35) 0%, rgba(6, 182, 212, 0.2) 100%);
+    color: #e4e4e7;
+    font-weight: 800;
+    box-shadow:
+        0 0 12px rgba(168, 85, 247, 0.35),
+        0 0 4px rgba(6, 182, 212, 0.15),
+        inset 0 0 6px rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+#workspaces button.urgent {
+    background: rgba(244, 63, 94, 0.25);
+    color: #f43f5e;
+    border: 1px solid rgba(244, 63, 94, 0.4);
+    animation: pulse-urgent 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-urgent {
+    from { box-shadow: 0 0 6px rgba(244, 63, 94, 0.2); }
+    to   { box-shadow: 0 0 18px rgba(244, 63, 94, 0.5); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   WINDOW TITLE
+   ════════════════════════════════════════════════════════════ */
+
+#window {
+    color: rgba(161, 161, 170, 0.8);
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+    padding-left: 16px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CLOCK — Centerpiece
+   ════════════════════════════════════════════════════════════ */
+
+#clock {
+    color: #06b6d4;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    padding: 0 20px;
+    background: rgba(6, 182, 212, 0.06);
+    border: 1px solid rgba(6, 182, 212, 0.12);
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+}
+
+#clock:hover {
+    background: rgba(6, 182, 212, 0.12);
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.15);
+    text-shadow: 0 0 14px rgba(6, 182, 212, 0.5);
+}
+
+/* ════════════════════════════════════════════════════════════
+   RIGHT-SIDE MODULES — Pill hover glow
+   ════════════════════════════════════════════════════════════ */
+
+#pulseaudio,
+#network,
+#battery,
+#backlight {
+    padding: 0 12px;
+}
+
+#pulseaudio:hover,
+#network:hover,
+#battery:hover,
+#backlight:hover {
+    background: rgba(22, 33, 62, 0.6);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.08);
+}
+
+/* ── PulseAudio ──────────────────────────────────────────── */
+#pulseaudio {
+    color: #e4e4e7;
+}
+
+#pulseaudio.muted {
+    color: rgba(161, 161, 170, 0.5);
+}
+
+/* ── Network ─────────────────────────────────────────────── */
+#network {
+    color: #e4e4e7;
+}
+
+#network.wifi {
+    color: #10b981;
+}
+
+#network.disconnected {
+    color: rgba(161, 161, 170, 0.4);
+}
+
+#network.linked {
+    color: #f59e0b;
+}
+
+/* ── Battery ─────────────────────────────────────────────── */
+#battery {
+    color: #e4e4e7;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #10b981;
+    text-shadow: 0 0 6px rgba(16, 185, 129, 0.25);
+}
+
+#battery.full {
+    color: #10b981;
+}
+
+#battery.warning:not(.charging) {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.15);
+    text-shadow: 0 0 6px rgba(245, 158, 11, 0.2);
+}
+
+#battery.critical:not(.charging) {
+    color: #f43f5e;
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    animation: pulse-urgent 1.2s ease-in-out infinite alternate;
+}
+
+/* ── Backlight ───────────────────────────────────────────── */
+#backlight {
+    color: #e4e4e7;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CUSTOM MEDIA — Accent highlight
+   ════════════════════════════════════════════════════════════ */
+
+#custom-media {
+    color: #c084fc;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0 12px;
+    background: rgba(168, 85, 247, 0.06);
+    border: 1px solid rgba(168, 85, 247, 0.1);
+}
+
+#custom-media:hover {
+    background: rgba(168, 85, 247, 0.14);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.12);
+    color: #a855f7;
+}
+
+/* ════════════════════════════════════════════════════════════
+   TRAY
+   ════════════════════════════════════════════════════════════ */
+
+#tray {
+    opacity: 0.7;
+    padding: 0 8px;
+}
+
+#tray:hover {
+    opacity: 1;
+    background: rgba(22, 33, 62, 0.45);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: rgba(244, 63, 94, 0.12);
+    border-radius: 8px;
+}
