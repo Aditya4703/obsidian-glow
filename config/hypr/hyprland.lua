@@ -331,6 +331,9 @@ hl.bind("Print",                    hl.dsp.exec_cmd('grim ~/Pictures/Screenshots
 -- Region screenshot → file
 hl.bind(mainMod .. " + Print",     hl.dsp.exec_cmd('grim -g "$(slurp -d)" ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png'))
 
+-- ── Screen Recording (wf-recorder + slurp) ────────────────
+hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenrecord.sh"))
+
 -- ── Color picker ──────────────────────────────────────────
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))
 
@@ -339,6 +342,7 @@ hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("cliphist list | hyprlauncher
 
 -- ── Music Widget (Now Playing) ──────────────────────────────
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/.config/music_widget/toggle_music.sh"))
+
 
 -- ── Move focus with mainMod + arrow keys ──────────────────
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))

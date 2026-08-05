@@ -81,6 +81,9 @@ DEPS=(
     eza
     bat
     fastfetch
+    podman
+    distrobox
+    mpv
 )
 
 AUR_DEPS=(
@@ -163,6 +166,17 @@ deploy "$REPO_DIR/config/kitty/kitty.conf"        "$HOME/.config/kitty/kitty.con
 
 # Bashrc
 deploy "$REPO_DIR/.bashrc"                        "$HOME/.bashrc"
+deploy "$REPO_DIR/.blerc"                         "$HOME/.blerc"
+
+# MPV
+if [ -d "$REPO_DIR/config/mpv" ]; then
+    deploy "$REPO_DIR/config/mpv" "$HOME/.config/mpv"
+fi
+
+# Thunar
+if [ -d "$REPO_DIR/config/Thunar" ]; then
+    deploy "$REPO_DIR/config/Thunar" "$HOME/.config/Thunar"
+fi
 
 # Wallpaper
 mkdir -p "$HOME/Pictures/wallpapers"
