@@ -197,7 +197,7 @@ This setup integrates **Kali Linux natively into Arch** using Podman and Distrob
 
 To initialize this environment after running `install.sh`, create a Kali distrobox:
 ```bash
-distrobox create -n kali --image docker.io/kalilinux/kali-rolling:latest --pre-init-hooks "dpkg-divert --add --rename --divert /usr/bin/systemd-tmpfiles.real /usr/bin/systemd-tmpfiles && ln -s /bin/true /usr/bin/systemd-tmpfiles"
+distrobox create -n kali --image docker.io/kalilinux/kali-rolling:latest --pre-init-hooks "dpkg-divert --add --rename --divert /usr/bin/systemd-tmpfiles.real /usr/bin/systemd-tmpfiles || true; ln -sf /bin/true /usr/bin/systemd-tmpfiles"
 ```
 
 ---
