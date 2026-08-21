@@ -54,6 +54,10 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("sleep 0.5 && waypaper --restore")
 
+    -- Applets
+    hl.exec_cmd("nm-applet --indicator")
+    hl.exec_cmd("blueman-applet")
+
     -- Status bar
     hl.exec_cmd("waybar")
 

@@ -96,6 +96,7 @@ AUR_DEPS=(
     awww
     bibata-cursor-theme
     waypaper
+    blueman
 )
 
 info "Installing official packages..."
