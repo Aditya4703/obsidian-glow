@@ -84,12 +84,18 @@ DEPS=(
     podman
     distrobox
     mpv
+    gvfs
+    gvfs-mtp
+    udisks2
+    thunar-volman
+    nwg-displays
 )
 
 AUR_DEPS=(
     hyprlauncher
     awww
     bibata-cursor-theme
+    waypaper
 )
 
 info "Installing official packages..."
@@ -176,6 +182,9 @@ fi
 # Thunar
 if [ -d "$REPO_DIR/config/Thunar" ]; then
     deploy "$REPO_DIR/config/Thunar" "$HOME/.config/Thunar"
+fi
+if [ -d "$REPO_DIR/config/xfce4" ]; then
+    deploy "$REPO_DIR/config/xfce4" "$HOME/.config/xfce4"
 fi
 
 # Wallpaper

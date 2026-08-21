@@ -9,12 +9,30 @@
 -- └──────────────────────────────────────────────────────────┘
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 
-hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "auto",
-})
+local monitors_conf = os.getenv("HOME") .. "/.config/hypr/monitors.conf"
+local f = io.open(monitors_conf, "r")
+local has_monitors = false
+if f then
+    for line in f:lines() do
+        if line:match("^monitor=") then
+            local output, mode, pos, scale = line:match("^monitor=([^,]+),([^,]+),([^,]+),([^,]+)")
+            if output then
+                hl.monitor({ output = output, mode = mode, position = pos, scale = scale })
+                has_monitors = true
+            end
+        end
+    end
+    f:close()
+end
+
+if not has_monitors then
+    hl.monitor({
+        output   = "",
+        mode     = "preferred",
+        position = "auto",
+        scale    = "auto",
+    })
+end
 
 
 -- ┌──────────────────────────────────────────────────────────┐
@@ -32,9 +50,9 @@ local menu        = "hyprlauncher"
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 
 hl.on("hyprland.start", function()
-    -- Wallpaper daemon (awww — formerly swww)
+    -- Wallpaper daemon (waypaper gui restore)
     hl.exec_cmd("awww-daemon")
-    hl.exec_cmd("sleep 0.5 && awww restore")
+    hl.exec_cmd("sleep 0.5 && waypaper --restore")
 
     -- Status bar
     hl.exec_cmd("waybar")
@@ -331,9 +349,6 @@ hl.bind("Print",                    hl.dsp.exec_cmd('grim ~/Pictures/Screenshots
 -- Region screenshot → file
 hl.bind(mainMod .. " + Print",     hl.dsp.exec_cmd('grim -g "$(slurp -d)" ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png'))
 
--- ── Screen Recording (wf-recorder + slurp) ────────────────
-hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenrecord.sh"))
-
 -- ── Color picker ──────────────────────────────────────────
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))
 
@@ -342,7 +357,6 @@ hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("cliphist list | hyprlauncher
 
 -- ── Music Widget (Now Playing) ──────────────────────────────
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/.config/music_widget/toggle_music.sh"))
-
 
 -- ── Move focus with mainMod + arrow keys ──────────────────
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
