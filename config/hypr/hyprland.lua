@@ -55,8 +55,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("sleep 0.5 && waypaper --restore")
 
     -- Applets
-    hl.exec_cmd("nm-applet --indicator")
-    hl.exec_cmd("blueman-applet")
+    hl.exec_cmd("kdeconnect-indicator")
+    hl.exec_cmd("hypr-kdeconnect-fix")
 
     -- Status bar
     hl.exec_cmd("waybar")
@@ -345,13 +345,13 @@ hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(terminal .. " -e yazi"))
 -- ── Lock screen ───────────────────────────────────────────
 hl.bind(mainMod .. " + L",     hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 
--- ── Screenshots (grim + slurp) ────────────────────────────
+-- ── Screenshots (grim + slurp + wl-copy) ────────────────────────────
 -- Region screenshot → clipboard
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
--- Fullscreen screenshot → file
-hl.bind("Print",                    hl.dsp.exec_cmd('grim ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png'))
--- Region screenshot → file
-hl.bind(mainMod .. " + Print",     hl.dsp.exec_cmd('grim -g "$(slurp -d)" ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png'))
+-- Fullscreen screenshot → file and clipboard
+hl.bind("Print",                    hl.dsp.exec_cmd('f=~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png; grim "$f" && wl-copy < "$f"'))
+-- Region screenshot → file and clipboard
+hl.bind(mainMod .. " + Print",     hl.dsp.exec_cmd('f=~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png; grim -g "$(slurp -d)" "$f" && wl-copy < "$f"'))
 
 -- ── Color picker ──────────────────────────────────────────
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))

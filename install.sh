@@ -89,6 +89,7 @@ DEPS=(
     udisks2
     thunar-volman
     nwg-displays
+    kdeconnect
 )
 
 AUR_DEPS=(
@@ -97,6 +98,7 @@ AUR_DEPS=(
     bibata-cursor-theme
     waypaper
     blueman
+    hypr-kdeconnect-fix-git
 )
 
 info "Installing official packages..."
