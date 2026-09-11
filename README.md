@@ -280,7 +280,7 @@ yay -S hyprlauncher awww bibata-cursor-theme feishin-bin
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/obsidian-glow.git
+git clone https://github.com/Aditya4703/obsidian-glow.git
 cd obsidian-glow
 
 # Hyprland
