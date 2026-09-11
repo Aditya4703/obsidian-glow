@@ -77,7 +77,7 @@ obsidian-glow/
 ### One-liner
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian-glow.git ~/obsidian-glow
+git clone https://github.com/Aditya4703/obsidian-glow.git ~/obsidian-glow
 cd ~/obsidian-glow
 chmod +x install.sh
 ./install.sh
